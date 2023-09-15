@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页游戏 - 游戏</title>
+     <style>
+        img {
+    width: 100px;  /* 或使用百分比，例如 width: 100%; */
+    height: auto;  /* 保持圖片的寬高比 */
+}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .main-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .tab {
+            margin-top: 20px;
+        }
+        .tabcontent {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="header">
+            <!-- 這裡是頁首內容 -->
+        </div>
+        
+        <div class="tab">
+            <button class="tablinks" onclick="window.location='shop.html'">商店</button>
+        </div>
+        
+        <div id="背包" class="tabcontent">
+            <h2>背包01：</h2>
+            <div id="userCards">
+                <!-- 这里可以使用JavaScript动态加载用户的卡片 -->
+            </div>
+        </div>
+        
+        <div id="挖矿" class="tabcontent">
+            {{!-- <img src="bgg.png" alt="挖矿图片" id="mining-image"> --}}
+            <h2>挖矿01</h2>
+            <p>当前资源金币: <span id="totalResources">0</span></p>
+            <p>资源产出: <span id="resourceRate">1</span> 金币/秒</p>
+            <button onclick="collectCoins()">领取全部金币</button>
+            <button onclick="clearLocalStorage()">清除localStorage</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>这是页脚内容</p>
+    </div>
+    
+    
+<script>
+        // 全局变量
+        const cardMiningRates = {
+            "A": 5,
+            "B": 3,
+            "C": 2,
+            "D": 1
+        };
+        let currentMiningRate = 0;
+        let totalResources = 0;
+        let resourceRate = 1;
+        let interval;
+
+
+
+        // 函数定义
+        function startMining() {
+            interval = setInterval(() => {
+                updateResource();
+                updateDisplay();
+            }, 1000);
+        }
+
+        function stopMining() {
+            clearInterval(interval);
+        }
+
+        function selectCardForMining(cardType) {
+            currentMiningRate += cardMiningRates[cardType];
+            document.getElementById('resourceRate').textContent = currentMiningRate;
+        }
+
+        function removeCardFromMining(cardType) {
+            currentMiningRate -= cardMiningRates[cardType];
+            document.getElementById('resourceRate').textContent = currentMiningRate;
+        }
+
+        function collectCoins() {
+            stopMining();
+
+            fetch('/collectCoins', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ coins: totalResources })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    totalResources = 0;
+                    localStorage.setItem('totalResources', totalResources);
+                    document.getElementById('totalResources').textContent = totalResources;
+                    startMining();
+                } else {
+                    alert("错误: " + data.message);
+                    startMining();
+                }
+            });
+        }
+
+        function updateDisplay() {
+            document.getElementById('totalResources').textContent = totalResources;
+        }
+
+        function updateResource() {
+            totalResources += resourceRate;
+            localStorage.setItem('totalResources', totalResources);
+        }
+
+        window.onload = function() {
+            startMining();
+
+      fetch('/getUserCards')
+    .then(response => response.json())
+    .then(data => {
+        const cardsData = data.cards;
+
+        cardsData.forEach(card => {
+            // 根據每張卡片的quantity重複添加圖片
+            for (let i = 0; i < card.quantity; i++) {
+                const imgElement = document.createElement('img');
+                imgElement.src = card.image_url;
+                imgElement.alt = `Card ${card.card_type}`;
+                document.getElementById('userCards').appendChild(imgElement);
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching user cards:', error);
+    });
+        }
+    </script>
+</body>
+</html>
