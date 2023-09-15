@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+    <div id="content-wrap">        
+        <div id="title">
+            <div class="logo">
+                <label for=""><img src="./images/logo.png" width="70px" height="70px"></label>
+            </div>
+            <div class="menu">
+                <a id="meun-shop" href="">抽卡</a>
+                <a id="meun-bag" href="">背包</a>                
+                <a id="meun-play" href="">遊戲</a>
+                <a id=""href="">圖鑑</a>
+                <a id="meun-test"href="">測試</a>
+                {{!-- <a id="meun-shop" href="">市場</a> --}}
+                {{!-- <a href="">遊戲百科</a> --}}
+            </div>
+            
+            <div id="right">
+                <button class="logo-button"><a href="https://www.twitter.com">X</a></button>
+                <button class="logo-button"><a href="https://zh-tw.facebook.com">FB</a></button>
+                <button class="logo-button">Share</button>
+        
+
+
+                <button class="logo-button"><a href="https://www.google.com">Google</a></button>
+                <button class="logo-button"><a href="https://github.com/">Github</a></button>
+                {{#if isLoggedIn}}
+                    <button class="logo-button"><a href="#" id="logout">登出</a></button>
+                {{else}}
+                    <button class="logo-button"><a href="/login" id="login">登入</a></button>
+                {{/if}}
+                    <button class="logo-button"><a href="/register">註冊</a></button>
+                            
+                <select class="language-select">
+                    <option value="zh-TW">繁體中文</option>
+                    <option value="en-US">English</option>
+                </select>
+                               
+            </div>
+        </div>
+
+        <div class="full-width-photo">
+            <img src="./images/bgg.png" alt="A beautiful scenery">
+        </div>
+        
+        <div class="start-game-btn-container">
+            <button id="game-start" class="big-game-button">開始遊戲</button>
+        </div>
+        
+    </div>
+    <footer>
+        <p>版權 © 2023 某某公司</p>
+        <a href="#top">返回頂部</a>
+    </footer>
+
+
+    <script>
+        document.getElementById('game-start').addEventListener('click', function() {
+        // 這裡我們會向伺服器請求確認是否已登入，你可能需要更改此URL以匹配你的路由結構
+            fetch('/is-logged-in', {
+                method: 'GET',
+                credentials: 'same-origin'
+            }).then(response => response.json()).then(data => {
+                if (data.loggedIn) {
+                    // 如果已登入，導向遊戲頁面
+                    window.location.href = 'shop';
+                } else {
+                    // 如果未登入，顯示提示訊息
+                    alert('請先登入');
+                }
+            });
+        });
+    </script>
+       
+    <script src="./js/game.js"></script> 
+    <script src="./js/pageindex.js"></script> 
+ 
+     
+</body>
+</html>
