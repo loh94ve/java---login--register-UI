@@ -1,21 +1,3 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    console.log(document.getElementById('myInput').value);
-
-    document.getElementById("startGameBtn").addEventListener('click', function() {
-        if (isUserLoggedIn()) {
-            window.location.href = "play.html";
-        } else {
-            alert("請先登入");
-        }
-    });
-    
-    document.getElementById('menuToggle').addEventListener('click', toggleNav);
-    document.getElementById('game-start').addEventListener('click', checkLoginAndRedirect);
-    
-    initCoinsAndPn();
-    initInputControls();
-});
-
 
 
 -- 創建 users 資料表
@@ -48,21 +30,28 @@ CREATE TABLE user_bag (
 
 
 
-
-
-
 CREATE TABLE card_images (
     image_id INT AUTO_INCREMENT PRIMARY KEY,
-    card_type CHAR(1) NOT NULL UNIQUE,  -- 使用 CHAR(1) 存儲 "A", "B", "C", "D"
+    card_type CHAR(25) NOT NULL UNIQUE,  -- 使用 CHAR(1) 存儲 "A", "B", "C", "D"
     image_url VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE mining_area (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    card_type VARCHAR(255) NOT NULL,
-    quantity INT NOT NULL,
+    card_type VARCHAR(25) NOT NULL,
+    quantity INT DEFAULT 1,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+
+
+
+CREATE TABLE cards (
+    card_id INT AUTO_INCREMENT PRIMARY KEY,
+    card_type VARCHAR(255) NOT NULL UNIQUE,  -- 添加了唯一約束
+    bonus FLOAT DEFAULT 1.0
 );
 
 
@@ -97,6 +86,71 @@ INSERT INTO card_images (card_type, image_url) VALUES
 ('AB', '/images/pok/AB.png'),
 ('AC', '/images/pok/AC.png'),
 ('AD', '/images/pok/AD.png');
+
+
+INSERT INTO `cards`(`card_id`, `card_type`, `bonus`) VALUES
+('1','A','5'),
+('2','B','4'),
+('3','C','3'),
+('4','D','3'),
+('5','E','3'),
+('6','F','3'),
+('7','G','3'),
+('8','H','3'),
+('9','I','3'),
+('10','J','3'),
+('11','K','3'), 
+('12','M','3'),
+('13','N','3'),
+('14','L','3'),
+('15','O','5'),
+('16','P','5'),
+('17','Q','5'),
+('18','R','5'),
+('19','S','5'),
+('20','T','5'),
+('21','U','5'),
+('22','V','5'),
+('23','W','5'),
+('24','X','5'),
+('25','Y','5'),
+('26','Z','3'),  
+('27','AA','5'),
+('28','AB','5'),
+('29','AC','5'),
+('30','AD','3');
+
+ALTER TABLE users ADD COLUMN totalResourceRate FLOAT DEFAULT 0;
+
+ALTER TABLE users ADD COLUMN totalResources INT DEFAULT 0;
+
+
+ALTER TABLE mining_area 
+ADD FOREIGN KEY (card_type) REFERENCES cards(card_type);
+
+DELIMITER //
+CREATE PROCEDURE UpdateResourceRate(IN userId INT)
+BEGIN
+    DECLARE totalRate FLOAT DEFAULT 0;  -- Set default value to 0
+    
+    SELECT COALESCE(SUM(m.quantity * c.bonus), 0) INTO totalRate
+    FROM mining_area m
+    JOIN cards c ON m.card_type = c.card_type
+    WHERE m.user_id = userId;
+    
+    -- If totalRate is NULL, set it to 0
+    IF totalRate IS NULL THEN
+        SET totalRate = 0;
+    END IF;
+    
+    UPDATE users SET totalResourceRate = totalRate WHERE user_id = userId;
+END;
+//
+DELIMITER ;
+
+
+	
+
 
 
 

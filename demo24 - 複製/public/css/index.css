@@ -1,0 +1,40 @@
+.start-game-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.start-game-btn-container button {
+    top: -400px;
+    position: absolute;
+    z-index: 1001;
+}
+.big-game-button {
+    padding: 20px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+}
+
+.big-game-button:hover {
+    background-color: #0056b3;
+}
+.full-width-photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.full-width-photo img {
+    flex: 1;
+    width: 100%; /* 圖像寬度設為 100%，使它充滿整個螢幕的寬度 */
+    height: auto; /* 高度自動，以保持圖像的比例 */
+}
