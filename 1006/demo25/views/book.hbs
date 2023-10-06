@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="stylesheet" href="./CSS/book.css">
+    <link rel="stylesheet" href="./CSS/pageindexfooterplay.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+    <link rel="icon" href="../images/icons/icon.png" type="image/png">
+    <title>PokeMon</title>
+    <script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.3/dist/tippy-bundle.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    #right a.logo-button {
+        font-size: 30px;
+        text-decoration: none;
+    }
+    #right button.logo-button a {
+        font-size: 25px;            
+    }
+    </style>
+
+</head>
+<body>
+    <div id="content-wrap">        
+        <div id="title">
+            <div class="logo">
+                <a href="/">
+                    <label for=""><img src="./images/logo.png" width="70px" height="70px"></label>
+                </a>
+            </div>
+            <div class="menu">
+                <a id="meun-shop" href="">抽卡</a>
+                <a id="meun-bag" href="">背包</a>                
+                <a id="meun-mining"href="">礦場</a>
+                <a id="meun-battle" href="">對戰</a>
+                <a id="meun-book"href="">圖鑑</a>
+                {{!-- <a id="meun-shop" href="">市場</a> --}}
+                <a id=""href="introduce">遊戲百科</a>
+            </div>
+            
+            <div id="right">
+                <a href="https://twitter.com" class="logo-button fa fa-twitter"></a>
+                <a href="https://zh-tw.facebook.com" class="logo-button fa fa-facebook-f"></a>
+
+                <a href="YOUR_SHARE_LINK" class="logo-button fa fa-share-alt"></a>
+
+        
+
+
+                <a href="https://google.com" class="logo-button fa fa-google-plus"></a>
+
+                <a href="https://github.com" class="logo-button fa fa-github"></a>
+                {{#if loggedIn}}
+                    <button class="logo-button"><a href="#" id="logout">登出</a></button>
+                {{else}}
+                    <button class="logo-button"><a href="/login" id="login">登入</a></button>
+                {{/if}}
+                    <button class="logo-button"><a href="/register">註冊</a></button>
+                            
+               
+                               
+            </div>
+        </div>       
+        
+    </div>
+    
+    <div class="book1-container">
+        <input type="text" id="search-input" placeholder="Search..">
+        <br><br>
+         
+       
+          
+      
+            <div class="book-container">
+            <img src="/images/pok/A.png" alt="Chimchar小火焰猴"  data-tippy-content="小火焰猴" data-tippy-theme="custom-tippy-theme">
+            <img src="/images/pok/B.png" alt="Charmander小火龍"  data-tippy-content="小火龍">
+            <img src="/images/pok/C.png" alt="Totodile小鋸鱷"  data-tippy-content="小鋸鱷">
+            <img src="/images/pok/D.png" alt="Rowlet木木梟"  data-tippy-content="木木梟"> 
+            <img src="/images/pok/E.png" alt="Treecko木守宮"  data-tippy-content="木守宮">
+            <img src="/images/pok/F.png" alt="Mudkip水躍魚"  data-tippy-content="水躍魚">
+            <img src="/images/pok/G.png" alt="Fennekin火狐狸"  data-tippy-content="火狐狸">
+            <img src="/images/pok/H.png" alt="Cyndaquil火球鼠"  data-tippy-content="火球鼠">
+            <img src="/images/pok/I.png" alt="Litten火斑喵"  data-tippy-content="火斑喵">
+            <img src="/images/pok/J.png" alt="Torchic火稚雞"  data-tippy-content="火稚雞">
+            <img src="/images/pok/K.png" alt="Pikachu皮卡丘"  data-tippy-content="皮卡丘">
+            <img src="/images/pok/L.png" alt="Eevee伊布"  data-tippy-content="伊布">
+            <img src="/images/pok/M.png" alt="Fuecoco呆火鱷"  data-tippy-content="呆火鱷">
+            <img src="/images/pok/N.png" alt="Bulbasaur妙蛙種子" data-tippy-content="妙蛙種子">
+            <img src="/images/pok/O.png" alt="Froakie呱呱泡蛙"  data-tippy-content="呱呱泡蛙">
+            <img src="/images/pok/P.png" alt="Piplup波加曼"  data-tippy-content="波加曼">
+            <img src="/images/pok/Q.png" alt="Scorbunny炎兔兒"  data-tippy-content="炎兔兒">
+            <img src="/images/pok/R.png" alt="Chespin哈力栗"  data-tippy-content="哈力栗">
+            <img src="/images/pok/S.png" alt="Turtwig草苗龜"  data-tippy-content="草苗龜">
+            <img src="/images/pok/T.png" alt="Sobble淚眼蜥"  data-tippy-content="淚眼蜥">
+            <img src="/images/pok/U.png" alt="Popplio球球海獅"  data-tippy-content="球球海獅">
+            <img src="/images/pok/V.png" alt="Squirtle傑尼龜"  data-tippy-content="傑尼龜">
+            <img src="/images/pok/W.png" alt="Chikorita菊草葉"  data-tippy-content="菊草葉">
+            <img src="/images/pok/X.png" alt="Sprigatito新葉喵"  data-tippy-content="新葉喵">
+            <img src="/images/pok/Y.png" alt="Grookey敲音猴"  data-tippy-content="敲音猴">
+            <img src="/images/pok/Z.png" alt="Quaxly潤水鴨"  data-tippy-content="潤水鴨">
+            <img src="/images/pok/AA.png" alt="Staryu海星星"  data-tippy-content="海星星">
+            <img src="/images/pok/AB.png" alt="Bounsweet甜竹竹"  data-tippy-content="甜竹竹">
+            <img src="/images/pok/AC.png" alt="Morpeko莫魯貝可"  data-tippy-content="莫魯貝可">
+            <img src="/images/pok/AD.png" alt="Meowth喵喵"  data-tippy-content="喵喵"> 
+            <img src="/images/pok/AE.png" alt="Magikarp鯉魚王"  data-tippy-content="鯉魚王">
+            <img src="/images/pok/AF.png" alt="Roserade羅絲雷朵"  data-tippy-content="羅絲雷朵">
+            <img src="/images/pok/AG.png" alt="Moltres火焰鳥"  data-tippy-content="火焰鳥"> 
+            <img src="/images/pok/AH.png" alt="Psyduck可達鴨"  data-tippy-content="可達鴨">
+            <img src="/images/pok/AI.png" alt="Pawmo布土撥"  data-tippy-content="布土撥">
+            <img src="/images/pok/AJ.png" alt="Petilil百合根娃娃"  data-tippy-content="百合根娃娃">
+            <img src="/images/pok/AK.png" alt="Jigglypuff胖丁"  data-tippy-content="胖丁">
+            <img src="/images/pok/AL.png" alt="Snorlax卡比獸"  data-tippy-content="卡比獸">
+            <img src="/images/pok/AM.png" alt="Lapras拉普拉斯"  data-tippy-content="拉普拉斯">
+            <img src="/images/pok/AN.png" alt="Pidgey波波"  data-tippy-content="波波">
+            <img src="/images/pok/AO.png" alt="Zapdos閃電鳥"  data-tippy-content="閃電鳥">
+        
+        </div>
+        
+        
+    </div>
+   
+
+    <footer>
+        <p>版權 © 2023 叉燒公司</p>
+        <a href="#top">返回頂部</a>
+    </footer>
+    
+ 
+
+</script>
+<script src="./js/book.js"></script>
+<script src="./js/pageindex.js"></script> 
+<script>
+    tippy('img[alt]', {
+        theme: 'custom-tippy-theme',
+        placement: 'bottom', // or 'top', 'left', 'right'
+        content(reference) {
+            return reference.getAttribute('alt');
+        },
+        allowHTML: true,
+        animation: 'scale',
+        arrow: false,
+        appendTo: document.body,
+        onTrigger(instance, event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const top = window.innerHeight / 1.5 - rect.height / 2;
+            const left = window.innerWidth / 2 - rect.width / 2;
+            instance.setProps({
+                popperOptions: {
+                    modifiers: [
+                        {
+                            name: 'offset',
+                            options: {
+                                offset: [left - rect.left, top - rect.top],
+                            },
+                        },
+                    ],
+                },
+            });
+        },
+    });
+</script>
+</body>
+</html>

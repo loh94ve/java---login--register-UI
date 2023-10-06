@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/icons/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>PokeMon</title>    
+    <link rel="stylesheet" href="./CSS/pageindexfooter.css">
+    <link rel="stylesheet" href="./CSS/shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+#depositModal, #paymentModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #aaa;
+    padding: 20px;
+    background-color: #fff;
+    z-index: 1000;
+    max-width: 400px;
+    max-height: 300px;
+    overflow: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+#depositModal label, #paymentModal label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#depositModal input[type="number"], #paymentModal input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#depositModal button, #paymentModal button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#depositModal button:hover, #paymentModal button:hover {
+    background-color: #0056b3;
+}
+#refreshWalletBtn {
+    background-color: transparent;  /* 設置為透明 */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    color: rgb(48, 224, 77);
+}
+
+#refreshWalletBtn:hover {
+    background-color: rgba(226, 230, 234, 0.5);  /* 當滑鼠懸停時，給予半透明的背景 */
+}
+
+#refreshWalletBtn:focus {
+    outline: none;
+}
+
+#right a.logo-button {
+    font-size: 30px;
+    text-decoration: none;
+}
+#right button.logo-button a {
+    font-size: 25px;            
+}
+
+
+
+
+</style>
+<body>
+    <div id="depositModal" style="display:none;">
+    <label>金額: </label>
+    <input type="number" id="amountInput">
+    <input type="hidden" id="orderId" value="">
+    <button id="confirmDepositBtn">確認儲值</button> 
+    <button id="cancelDepositBtn">關閉</button>      
+    </div>
+    <div id="paymentModal" style="display:none;">
+            <div id="paymentContent">
+                <p>儲值中....該頁面請勿關閉</p>
+            </div>
+        
+    </div>
+
+</div>
+
+
+
+        <div class="modal divmesg2" id="idivmesg2">
+            <div class="message-content mesg2">
+                <span id="mycard"></span>
+                <div id="cardResults"></div>
+            </div>
+            <button class="btn mesgbtn" onclick="imsgbtn()">確認</button>
+        </div>
+        
+        <div id="content-wrap1">
+            <div class="modal divmesg1" id="idivmesg1">
+                <div class="message-content mesg1">
+                    <span id="mycard1"></span>
+                </div>
+                <button class="btn mesgbtn1"  onclick="imsgbtn1()">確認</button>
+            </div>
+        </div> 
+
+        <div id="title">
+            <div class="logo">
+                <a href="/">
+                    <label for=""><img src="./images/logo.png" ></label>
+                </a>
+            </div>
+            <div class="menu">
+                <a id="meun-shop" href="">抽卡</a>
+                <a id="meun-bag" href="">背包</a>                
+                <a id="meun-mining"href="">礦場</a>
+                <a id="meun-battle" href="">對戰</a>
+                <a id="meun-book"href="">圖鑑</a>
+                <a id=""href="introduce">遊戲百科</a>
+                <a href="#" id="depositLink">儲值</a>
+            </div>
+            
+            <div id="right">
+                <a href="https://twitter.com" class="logo-button fa fa-twitter"></a>
+                <a href="https://zh-tw.facebook.com" class="logo-button fa fa-facebook-f"></a>
+                <a href="YOUR_SHARE_LINK" class="logo-button fa fa-share-alt"></a>
+                <a href="https://google.com" class="logo-button fa fa-google-plus"></a>
+                <a href="https://github.com" class="logo-button fa fa-github"></a>
+                {{#if loggedIn}}
+                    <button class="logo-button"><a href="/" id="logout">登出</a></button>
+                {{else}}
+                    <button class="logo-button"><a href="/login" id="login">登入</a></button>
+                {{/if}}
+                <button class="logo-button"><a href="/register">註冊</a></button>
+                
+                               
+            </div>
+        </div>
+
+        <div class="full-width-photo">
+
+            <div class="mesg">
+                <label for="">錢包</label><br>
+                <span id="coins">{{ coins }}</span> 
+                <button id="refreshWalletBtn"><i class="fas fa-sync-alt"></i></button>                   
+                <label for="">卡片</label><br>
+                <span for="" id="pn"> {{totalCards}}</span>
+                <label for="">傳說</label><br>
+                <label for="" id="cardACount">{{cardACount}}</label>
+            </div>
+
+            <img src="/images/02.jpg" alt="A beautiful scenery">
+            <div class="image-text">遊戲商店</div>
+
+            <img src="/images/ball.png" alt="A ball" id="ball">
+            <div class="input-section">
+                <button id="decrement" class="input-button">-</button>
+                <input type="number" id="myInput"  min="1" value="1" placeholder="請輸入數字">
+                <button id="increment" class="input-button">+</button>
+            </div>
+            <button id="calculate" class="bright" onclick="drawCard1()">花費: <span id="cost">10</span>金幣</button>
+            
+            <img src="/images/MasterBall.png" id="Mball">
+            <div class="input-section2">
+                <button id="decrement2" class="input-button">-</button>
+                <input type="number" id="myInput2"  min="1" value="1" placeholder="請輸入數字">   
+                <button id="increment2" class="input-button">+</button>
+            </div>
+            <button id="calculate" class="bleft" onclick="drawCard2()">花費: <span id="cost2">20</span>金幣</button>
+        
+    </div>
+    <div style="display: none;">
+        <p id="ID" style="display: none;">{{userId}}</p>
+    </div>
+    <footer>
+        <p>版權 © 2023 叉燒公司</p>
+        <a href="#top">返回頂部</a>
+        
+    </footer>
+ 
+    <script src="/js/game.js"></script>     
+    <script src="./js/pageindex.js"></script> 
+    <script src="./js/drawcard.js"></script>
+    <script>
+        getCoinsAndCardsFromServer()
+        document.getElementById('refreshWalletBtn').addEventListener('click', function() {
+                fetch('/api/getWalletBalance')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('coins').textContent = data.coins;
+                    } else {
+                        console.error('Error:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching wallet balance:', error);
+                });
+            });
+
+    </script>
+<script>
+    document.getElementById('depositLink').addEventListener('click', function() {
+        // 顯示儲值模態視窗
+        document.getElementById('depositModal').style.display = 'block';
+    });
+    document.getElementById('cancelDepositBtn').addEventListener('click', function() {
+        document.getElementById('depositModal').style.display = 'none';
+    });
+
+    
+    const orderId = Date.now();
+    document.getElementById('orderId').value = orderId;
+
+document.getElementById('confirmDepositBtn').addEventListener('click', function() {
+    
+    const amount = document.getElementById('amountInput').value;
+    const userId = document.getElementById('ID').value;
+    const orderId = document.getElementById('orderId').value; // Retrieve the orderId
+
+    if (amount && Number(amount) > 0) {
+        document.getElementById('paymentModal').style.display = 'block';
+
+        fetch(`/payment?amount=${amount}&orderId=${orderId}`, { method: 'GET' })
+        .then(response => response.text())
+        .then(data => {
+            const paymentWindow = window.open('', '_blank');
+            paymentWindow.document.write(data);
+            paymentWindow.document.close();
+
+            const checkWindowClosed = setInterval(() => {
+                if (paymentWindow.closed) {
+                    clearInterval(checkWindowClosed);
+                    fetch(`/checkTransactionStatus?userId=${userId}&orderId=${orderId}`, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('儲值成功');
+                        } else {
+                            alert('儲值失敗');
+                        }
+                        document.getElementById('paymentModal').style.display = 'none';
+                    })
+                    .catch(error => {
+                        console.error('Error checking transaction status:', error);
+                        alert('儲值失敗');
+                        document.getElementById('paymentModal').style.display = 'none';
+                    });
+                }
+            }, 500);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('儲值失敗');
+            document.getElementById('paymentModal').style.display = 'none';
+        });
+    } else {
+        alert('請輸入有效的金額！');
+    }
+});
+
+
+
+
+
+</script>
+</body>
+</html> 

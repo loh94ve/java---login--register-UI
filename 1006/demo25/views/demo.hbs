@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/demo.css">
+    <link rel="icon" href="/images/icons/icon.png" type="image/png">
+    <title>PokeMon</title>
+</head>
+<body>
+    <div class="battlefield">
+
+        
+        <div class="health-bar" id="healthBar1">
+            <div class="health" style="width: 100%;"></div>
+            <span class="health-text">100/100</span>
+        </div>
+        
+        <div class="health-bar" id="healthBar2">
+            <div class="health" style="width: 100%;"></div>
+            <span class="health-text">100/100</span>
+        </div>
+
+        <div class="status-bar">
+            <div class="character" id="character1">
+                <div class="character-image">
+                    <img src="/images/pokpng/{{cardType}}.PNG" style="width: 250px;"alt="角色1">
+                </div>
+            </div>
+            
+            <div class="character" id="character2">
+                <div class="character-image">
+                    <img src="/images/Boss/{{bossName}}.png" style="width: 250px;" alt="角色2">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="/js/demo.js"></script>
+    <script>
+    
+        window.addEventListener('beforeunload', function(e) {
+                
+            e.returnValue = '';
+            e.preventDefault();
+        
+        });
+
+        
+    </script>
+</body>
+</html>

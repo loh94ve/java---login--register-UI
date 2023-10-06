@@ -1,0 +1,109 @@
+.battlefield {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    position: relative;
+    width: 80%;
+    
+    margin: 0 auto;
+    border: 2px solid #333;
+    height: 100%;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+}
+
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: auto
+}
+
+.character-image {
+    bottom: 50%;
+    margin: -250px 20px;
+}
+
+.character#character2 {
+    transform: scaleX(-1);
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* 調整寬度，使其與戰場框匹配 */
+    margin-top: 50%;
+}
+
+.health-bar {
+    width: 30%;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.health-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 使文本居中 */
+    font-weight: bold;
+    color: #333;
+}
+.health {
+    height: 100%;
+    background-color: red;
+    border-radius: 8px;
+}
+
+#healthBar1 {
+    position: absolute;
+    top: 10px;
+    left: 10%;
+}
+
+#healthBar2 {
+    position: absolute;
+    top: 10px;
+    right: 10%;
+}
+
+
+
+.character.hit {
+    animation: shake 0.2s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-2px, 0px) rotate(1deg); }
+    30% { transform: translate(1px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-1px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.character.attack {
+    animation: slide 0.5s forwards;
+}
+
+@keyframes slide {
+    100% { transform: translateX(230%); }
+}
+
+.character#character2.attack {
+    animation: slide2 0.5s forwards;
+}
+
+@keyframes slide2 {
+    100% { transform: translateX(-230%) scaleX(-1); }
+}

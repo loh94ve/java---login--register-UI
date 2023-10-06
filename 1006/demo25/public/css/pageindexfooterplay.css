@@ -1,0 +1,128 @@
+body {
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    min-width: 1600px;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(22,73,49,1);
+    color: #ffffff;
+    padding: 5px;
+}
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* 修改此处 */
+    align-items: center;
+}
+
+.logo label {
+    margin-left: 100px; /* 新增此行，給LOGO元素自身添加左邊距 */
+}
+
+
+.menu {
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 11%;
+    
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 15px;
+    font-family: '標楷體', sans-serif;
+    font-size: 25px;
+}
+
+.menu a:hover, a:active {
+    color: #ffffff;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo-button, .language-select, .hamburger-menu {
+    margin-right: 5px;
+}
+
+.logo-button {
+    background-color:rgb(26, 93, 65);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+.logo-button:hover {
+    background-color: #55aa5a;
+}
+.logo-button a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.logo-button a:hover, 
+.logo-button a:active, 
+.logo-button a:focus {
+    color: #ffffff;
+}
+
+.language-select {
+    background-color: rgb(26, 93, 65);
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#content-wrap {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+footer {
+    position: fixed;
+    background-color: rgba(22,73,49,1);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;    
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+

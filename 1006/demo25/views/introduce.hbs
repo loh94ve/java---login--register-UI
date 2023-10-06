@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../images/icons/icon.png" type="image/png">
+    <title>PokeMon</title>
+
+    <link rel="stylesheet" href="./CSS/introduce.css">
+    <link rel="stylesheet" href="./CSS/pageindexfooterplay.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    #right a.logo-button {
+        font-size: 30px;
+        text-decoration: none;
+    }
+    #right button.logo-button a {
+        font-size: 25px;            
+    }
+    </style>
+</head>
+
+<body>
+    <div id="content-wrap">
+        <div id="title">
+            <div class="logo">
+                <a href="/">
+                    <label for=""><img src="./images/logo.png" width="70px" height="70px"></label>
+                </a>
+            </div>
+            <div class="menu">
+                <a id="meun-shop" href="">抽卡</a>
+                <a id="meun-bag" href="">背包</a>                
+                <a id="meun-mining"href="">礦場</a>
+                <a id="meun-battle" href="">對戰</a>
+                <a id="meun-book"href="">圖鑑</a>                
+                <a id=""href="introduce">遊戲百科</a>                
+            </div>
+
+            <div id="right">
+                <a href="https://twitter.com" class="logo-button fa fa-twitter"></a>
+                <a href="https://zh-tw.facebook.com" class="logo-button fa fa-facebook-f"></a>
+
+                <a href="YOUR_SHARE_LINK" class="logo-button fa fa-share-alt"></a>
+
+        
+
+
+                <a href="https://google.com" class="logo-button fa fa-google-plus"></a>
+
+                <a href="https://github.com" class="logo-button fa fa-github"></a>
+                {{#if isLoggedIn}}
+                <button class="logo-button"><a href="#" id="logout">登出</a></button>
+                {{else}}
+                <button class="logo-button"><a href="/login" id="login">登入</a></button>
+                {{/if}}
+                <button class="logo-button"><a href="/register">註冊</a></button>
+               
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+    <div class="bookf-container">
+        <a href="#inprogress" class="bookf-link"><span class="month-marker"></span>遊戲概述</span></a>
+        <a href="#september" class="bookf-link"><span class="month-marker"></span>遊戲規則</span></a>
+        <a href="#october" class="bookf-link"><span class="month-marker"></span>卡片系統</span></a>
+        <a href="#november" class="bookf-link"><span class="month-marker"></span>挖礦系統</span></a>
+        <a href="#winter" class="bookf-link"><span class="month-marker"></span>背包系統</span></a>
+        <a href="#forward" class="bookf-link"><span class="month-marker"></span>更新和擴展</span></a>
+
+    </div>
+
+    </div>
+    </div>
+
+    <div class="book1-container">
+
+        <div class="introduce-container">
+
+            <p id="inprogress" style="font-size: 50px;">遊戲概述</p>
+            <p style="font-size: 18px;">
+                《Pokemon》是一款Gamefi區塊鏈遊戲，參與玩家的目標在於收集寶可夢，並派遣寶可夢參與挖礦活動和戰鬥競技。本遊戲融合了區塊鏈上的不可替代性代幣（NFT）技術、卡片抽選機制、迷人的卡片藝術以及多樣化的遊戲元素，提供玩家豐富的娛樂體驗，同時為玩家提供潛在的收益機會達到"Play
+                and Earn"。
+            </p> <br>
+            <p id="september" style="font-size: 36px;">遊戲規則：</p>
+            <p style="font-size: 18px;">
+                遊戲開始時，每位玩家將被贈送100單位的遊戲幣，這些遊戲幣可用於抽取寶可夢卡片。玩家可將所獲得的寶可夢置於礦場，從而賺取額外的遊戲幣，或者選擇以自身的寶可夢參與激烈的戰鬥競技。<br>
+                需要注意的是，寶可夢無法同時參與礦場工作和戰鬥競技，因此玩家必須謹慎選擇。
+            </p> <br>
+
+            <p id="october" style="font-size: 36px;">卡片系統：</p>
+            <p style="font-size: 18px;">
+                目前本遊戲總共提供了30張卡片，每張卡片都具有不同的稀有度。稀有度按照由最稀有到最常見的順序排列，分為A、B、C三個等級。A級寶可夢不僅極為稀有，而且具有最強大的實力和最高的挖礦效率。<br>
+                使用20元的抽獎券可提高獲得A級卡片的機會，是追求卓越戰鬥實力或優越的挖礦回報的玩家最值得的選擇。抽卡畫面會顯示玩家的錢包餘額、已獲得的卡片數量以及傳說卡片的收集進度。<br>
+                卡片上標示了寶可夢的屬性及數值，下方的數值依序為攻擊力、防禦力、生命及敏捷。
+            </p> <br>
+            <p id="november" style="font-size: 36px;">挖礦系統：</p>
+            <p style="font-size: 18px;">
+                玩家指派背包中的寶可夢進入礦場，被指派的寶可夢將進行挖礦，挖礦的收益將自動轉入玩家錢包。<br>
+                挖礦的收益取決於被指派進入礦場的寶可夢稀有度，值得玩家注意的是：A級寶可夢的每秒收益是最高的。</p>
+            <br>
+            <p id="winter" style="font-size: 36px;">背包系統：</p>
+            <p style="font-size: 18px;">
+                背包系統專為戰鬥競技模式而設計。未進入礦場的寶可夢卡片會被放置於玩家的背包中，玩家可在戰鬥中使用背包中的寶可夢卡片。<br>
+                其中最稀有的A級寶可夢的戰力最為出眾，因此玩家需要謹慎選擇，是將其用於挖礦還是戰鬥，這取決於玩家的策略規劃和玩家的智慧。</p>
+            <br>
+            <p id="forward" style="font-size: 36px;">更新和擴展：</p>
+            <p style="font-size: 18px;">
+                遊戲開發團隊未來的計畫包括：<br>
+                1. 引入更多令人期待的卡片，豐富遊戲體驗。<br>
+                2. 推出多人對戰模式，拓展遊戲的多樣性，不再僅適合單人遊玩。<br>
+                3. 創建遊戲內虛擬貨幣交易所，為玩家提供更多有趣的互動機會。</p>
+            <!-- 在这里继续添加您的文本 -->
+        </div>
+    </div>   
+    
+    <footer>
+        <div>版權 © 2023 叉燒公司</div>
+        <a href="#top">返回頂部</a>
+    </footer>
+
+
+
+   
+    <script src="./js/introduce.js"></script>
+    <script src="./js/pageindex.js"></script>
+</body>
+</html>

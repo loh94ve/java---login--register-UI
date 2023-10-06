@@ -1,0 +1,131 @@
+.book-container img {
+    width: 150px;  /* 或使用百分比，例如 width: 100%; */
+   
+}
+
+body{
+    background-color:  #4CAF50;
+}
+
+.book1-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 95px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 1500px;
+    margin: 20px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: auto;
+}
+
+.book1-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.book1-container::-webkit-scrollbar-track {
+    background: rgba(200, 200, 200, 0.2);
+}
+
+.book1-container::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.6);
+    border-radius: 5px;
+}
+
+.book1-container::-webkit-scrollbar-thumb:hover {  
+    background: rgba(80, 80, 80, 0.8);
+}
+
+
+
+button:hover {
+    background-color: #2980b9;
+}
+
+input {
+    /* 添加您的自定义样式 */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    /* 上移元素 */
+    position: relative; /* 将元素设为相对定位 */
+    top: -20px; /* 根据需要调整上移的距离 */
+}
+
+
+.image-container img::after {
+    content: attr(alt); /* 使用图像的 alt 属性作为悬浮文字内容 */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%; /* 确保悬浮文字占满图像宽度 */
+    text-align: center; /* 文字居中显示 */
+}
+
+
+
+   /* 添加过渡效果 */
+.book-container img {
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 添加 transform 过渡效果 */
+}
+
+/* 添加搜索结果动画 */
+.book-container img.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    animation: cardDisappear 0.5s forwards; /* 应用卡片消失的关键帧动画 */
+}
+
+/* 添加搜索结果出现动画 */
+.book-container img.fade-in {
+    opacity: 1;
+    transform: translateY(0); /* 卡片回到原始位置 */
+}
+
+@keyframes cardDisappear {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg); /* 初始状态：不透明，未旋转 */
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%) rotate(360deg); /* 最终状态：透明，移动到顶部并旋转一周 */
+    }
+}
+
+
+.tippy-box[data-theme~='custom-tippy-theme'] {
+    background-color: #333;
+    color: #fff; 
+    border-radius: 4px;
+    padding: 10px; 
+    font-size: 14px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #555; 
+    width: 200px; 
+    text-align: center; 
+    transition: transform 0.3s ease-out;
+}
+
+
+.tippy-box[data-theme~='custom-tippy-theme'] .tippy-arrow {
+    color: #333; 
+}
+
+.tippy-box[data-animation='scale'][data-state='hidden'] {
+    opacity: 0;
+    transform: scale(0.5); 
+}
+
+.tippy-box[data-animation='scale'][data-state='visible'] {
+    opacity: 1;
+    transform: scale(1);
+}

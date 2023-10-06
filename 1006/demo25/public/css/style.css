@@ -1,0 +1,493 @@
+img {
+    width: 70px;  /* 或使用百分比，例如 width: 100%; */
+    height: auto;  /* 保持圖片的寬高比 */
+}
+body {
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    min-width: 2000px;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(22,73,49,1);
+    color: #ffffff;
+    padding: 5px;
+}
+
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* 修改此处 */
+    align-items: center;
+}
+
+.logo label {
+    margin-left: 100px; /* 新增此行，給LOGO元素自身添加左邊距 */
+}
+
+
+.menu {
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 10%;
+    
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 15px;
+    font-family: '標楷體', sans-serif;
+    font-size: 25px;
+}
+
+.menu a:hover, a:active {
+    color: #ffffff;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo-button, .language-select, .hamburger-menu {
+    margin-right: 5px;
+}
+
+.logo-button {
+    background-color:rgb(26, 93, 65);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s;
+}
+
+.logo-button:hover {
+    background-color: #55aa5a;
+}
+.logo-button a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.logo-button a:hover, 
+.logo-button a:active, 
+.logo-button a:focus {
+    color: #ffffff;
+}
+
+.language-select {
+    background-color: rgb(26, 93, 65);
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#content-wrap {
+    min-height: calc(100% - 60px); /* 頁腳高度為60px */
+    position: relative;
+}
+
+
+footer {
+    background-color: rgba(22,73,49,1);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.full-width-photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.full-width-photo img {
+    flex: 1;
+    width: 100%; /* 圖像寬度設為 100%，使它充滿整個螢幕的寬度 */
+    height: auto; /* 高度自動，以保持圖像的比例 */
+}
+#ball {
+    position: absolute; /* 使用絕對定位 */
+    top: 53%;           /* 將圖片向上偏移50% */
+    left: 35%;          /* 將圖片向左偏移50% */
+    transform: translate(-50%, -50%); /* 使用transform讓圖片居中 */
+    width: 400px;       /* 控制圖片的寬度，你可以根據需要設定 */
+    height: auto;       /* 設定高度自動，以保持圖片的比例 */
+    z-index: 1000;      /* 設置 z-index 以确保 ball.png 出现在 bgg.png 的上面 */
+}
+#Mball {
+    position: absolute; /* 使用絕對定位 */
+    top: 50%;           /* 將圖片向上偏移50% */
+    left: 65%;          /* 將圖片向左偏移50% */
+    transform: translate(-50%, -50%); /* 使用transform讓圖片居中 */
+    width: 300px;       /* 控制圖片的寬度，你可以根據需要設定 */
+    height: auto;       /* 設定高度自動，以保持圖片的比例 */
+    z-index: 1000;      /* 設置 z-index 以确保 ball.png 出现在 bgg.png 的上面 */
+}
+
+.cc{
+    position: absolute; /* 添加此行 */
+    bottom: 250px; /* 添加此行，将按钮定位在其父元素的底部 */
+    right: 1070px;
+}
+#content-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100% - 60px);
+}
+.minus-btn{
+    position: absolute; /* 添加此行 */
+    bottom: 250px; /* 添加此行，将按钮定位在其父元素的底部 */
+    right: 1070px;
+}
+.plus-btn{
+    position: absolute; /* 添加此行 */
+    bottom: 250px; /* 添加此行，将按钮定位在其父元素的底部 */
+    right: 1070px;
+}
+.card-draw-controls {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 70%; /* 調整此數值，以便控制元素在 ball.png 下方的位置 */
+    left: 35%; /* 調整此數值，以便控制元素的水平位置 */
+    transform: translate(-50%, -50%);
+    z-index:1;
+}
+.action-button {
+    position: absolute; 
+    bottom: 200px; /* 调整这个值可以将按钮上下移动 */
+    left: 35%; 
+    transform: translate(-50%, -50%); 
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* 确保按钮在 ball.png 的上面 */
+}
+
+.action-button:hover {
+    background-color: #45a049;
+}
+/* 新增的CSS部分 */
+
+.input-section {
+    position: absolute;
+    top: 65%; /* 調整此數值，以便控制元素在 ball.png 下方的位置 */
+    left: 35%; /* 調整此數值，以便控制元素的水平位置 */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+#myInput, #myInput2{
+    padding: 10px;
+    border: none; /* 移除邊框 */
+    flex-grow: 1;
+    text-align: center;
+    outline: none; /* 移除輸入框獲得焦點時的外框 */
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.1); /* 為輸入框添加一些陰影 */
+    height: 40px; /* 設置輸入框高度 */
+    
+}
+
+.input-button {
+    padding: 0; /* 移除 padding 使按鈕的尺寸可控 */
+    border: none; /* 移除邊框 */
+    background-color: #f1f1f1;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 40px; /* 設置按鈕的寬度，與高度一致 */
+    height: 40px; /* 設置按鈕的高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#decrement,#decrement2 {
+    border-top-left-radius: 50%; /* 使減按鈕的左上角呈現圓弧 */
+    border-bottom-left-radius: 50%; /* 使減按鈕的左下角呈現圓弧 */
+}
+
+#increment, #increment2 {
+    border-top-right-radius: 50%; /* 使加按鈕的右上角呈現圓弧 */
+    border-bottom-right-radius: 50%; /* 使加按鈕的右下角呈現圓弧 */
+}
+
+.input-button:hover {
+    background-color: #ddd;
+}
+
+.input-button:active {
+    background-color: #bbb;
+}
+.input-section2 {
+    position: absolute;
+    top: 65%; /* 調整此數值，以便控制元素在 ball.png 下方的位置 */
+    left: 65%; /* 調整此數值，以便控制元素的水平位置 */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+
+.mesg {
+    position: absolute;
+    top: 30%; 
+    right: 70%; 
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    align-items: center;
+    font-family: '標楷體', sans-serif;
+    font-size: 32px;
+    color: #ffffff; /* 設定字體顏色為白色 */
+    background-color: rgba(0, 0, 0, 0.5); /* 添加半透明的黑色背景 */
+    border-radius: 15px; /* 圓角效果 */
+    padding: 20px; /* 內部留白 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影 */
+}
+.mesg label {
+    display: block; /* 使label元素呈現為塊狀 */
+    margin-bottom: 0px; /* 每個label元素之間的間距 */
+    width: 200px;
+}
+
+#calculate {
+     position: absolute;
+    top: 69%; /* 調整此數值，以便控制元素在 ball.png 下方的位置 */
+     /* 調整此數值，以便控制元素的水平位置 */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background-color: #39923c;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.bright{
+    left: 35%
+}
+.bleft{
+    left: 65%
+}
+
+#calculate:hover {
+        background-color: #e74c3c;
+}
+
+#calculate:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    
+    font-size: 20px;
+    width: 150px;
+}
+.image-text {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -500%);
+    background-color: rgba(216, 255, 210, 0.8); /* 淺綠色背景 */
+    color: #287d28; /* 深綠色文字 */
+    padding: 15px 30px;
+    font-size: 100px;
+    text-align: center;
+    border-radius: 100px;
+    border: 3px solid #50a450; /* 綠色框線 */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* 添加hover效果 */
+.image-text:hover {
+    transform: translate(-50%, -505%);
+    background-color: rgba(196, 255, 190, 0.9);
+}
+
+.modal {
+    width: 620px;
+    height: 500px;
+    overflow: auto;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    font-family: '標楷體', sans-serif;
+    font-size: 32px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px; 
+    padding: 25px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.message-content {
+    width: 80%;
+    max-height: 60%;
+    overflow-y: auto;
+    position: relative;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px; 
+    padding: 15px;
+    padding-top: 30px;  /* 增加上部的間隔 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* 從容器頂部開始顯示內容 */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Message content specifics */
+.message-content span {
+    display: block;
+    margin: 0 auto;  /* 使文字垂直居中 */
+}
+
+.message-content label {
+    display: block;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+
+/* Buttons in the Modal */
+.btn {
+    position: absolute;
+    bottom: 10%; /* Positioning from the bottom for better spacing */
+    left: 50%; 
+    transform: translateX(-50%); /* Centering the button */
+    z-index: 1001;
+    font-size: 28px; /* Slightly reduced font size for better visual hierarchy */
+    color: #ffffff;
+    background-color: rgba(80, 80, 80, 0.6);    border: none; /* Removing any default border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px 25px; /* Giving more horizontal padding for a wider button look */
+    cursor: pointer; /* Pointer cursor for better UX */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease; 
+}
+
+.btn:hover {
+    background-color: rgba(60, 60, 60, 0.8); 
+}
+
+.message-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.message-content::-webkit-scrollbar-track {
+    background: rgba(200, 200, 200, 0.2); 
+}
+
+.message-content::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.6); 
+    border-radius: 5px;
+}
+
+.message-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(80, 80, 80, 0.8); 
+}
+.big-game-button {
+    padding: 20px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+}
+
+.big-game-button:hover {
+    background-color: #0056b3;
+}
+.start-game-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;  /* 改為 absolute */
+    top: 50%;  /* 將其定位到圖片的中心 */
+    left: 50%;  /* 將其定位到圖片的中心 */
+    transform: translate(-50%, -50%);  /* 使用 transform 進行微調，使其完全居中 */
+
+}
+
+.start-game-btn-container button {
+    top: 200px;
+    position: relative;
+    z-index: 1001;
+}
+
+
+
+
+
+
+
+
+

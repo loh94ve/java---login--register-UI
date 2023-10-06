@@ -1,0 +1,229 @@
+
+
+-- 創建 users 資料表
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,  -- 建議使用加密後的密碼
+    email VARCHAR(255) UNIQUE,
+    date_joined DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_login DATETIME
+);
+
+-- 創建 wallet 資料表
+CREATE TABLE wallet (
+    wallet_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    coins INT DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- 創建 user_bag 資料表
+CREATE TABLE user_bag (
+    bag_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    card_type CHAR(1) NOT NULL,  -- 使用 CHAR(1) 存儲 "A", "B", "C", "D"
+    quantity INT DEFAULT 1,
+    UNIQUE(user_id, card_type),  -- 確保每個用戶的每種卡片只有一個條目
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE card_images (
+    image_id INT AUTO_INCREMENT PRIMARY KEY,
+    card_type CHAR(25) NOT NULL UNIQUE,  -- 使用 CHAR(1) 存儲 "A", "B", "C", "D"
+    image_url VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE mining_area (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    card_type VARCHAR(25) NOT NULL,
+    quantity INT DEFAULT 1,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+
+
+
+CREATE TABLE cards (
+    card_id INT AUTO_INCREMENT PRIMARY KEY,
+    card_type VARCHAR(255) NOT NULL UNIQUE,  -- 添加了唯一約束
+    bonus FLOAT DEFAULT 1.0
+);
+
+
+
+INSERT INTO card_images (card_type, image_url) VALUES
+('A', '/images/pok/A.png'),
+('B', '/images/pok/B.png'),
+('C', '/images/pok/C.png'),
+('D', '/images/pok/D.png'),
+('E', '/images/pok/E.png'),
+('F', '/images/pok/F.png'),
+('G', '/images/pok/G.png'),
+('H', '/images/pok/H.png'),
+('I', '/images/pok/I.png'),
+('J', '/images/pok/J.png'),
+('K', '/images/pok/K.png'),
+('L', '/images/pok/L.png'),
+('M', '/images/pok/M.png'),
+('N', '/images/pok/N.png'),
+('O', '/images/pok/O.png'),
+('P', '/images/pok/P.png'),
+('Q', '/images/pok/Q.png'),  
+('R', '/images/pok/R.png'),
+('S', '/images/pok/S.png'),
+('T', '/images/pok/T.png'),
+('U', '/images/pok/U.png'),
+('V', '/images/pok/V.png'),
+('W', '/images/pok/W.png'),
+('X', '/images/pok/X.png'),
+('Y', '/images/pok/Y.png'),
+('Z', '/images/pok/Z.png'),
+('AA', '/images/pok/AA.png'),
+('AB', '/images/pok/AB.png'),
+('AC', '/images/pok/AC.png'),
+('AD', '/images/pok/AD.png'),
+('AE', '/images/pok/AE.png'),
+('AF', '/images/pok/AF.png'),
+('AG', '/images/pok/AG.png'),
+('AH', '/images/pok/AH.png'),
+('AI', '/images/pok/AI.png'),
+('AJ', '/images/pok/AJ.png'),
+('AK', '/images/pok/AK.png'),
+('AL', '/images/pok/AL.png'),
+('AM', '/images/pok/AM.png'),
+('AN', '/images/pok/AN.png'),
+('AO', '/images/pok/AO.png');
+
+
+
+
+INSERT INTO `cards`(`card_id`, `card_type`, `bonus`) VALUES
+('1','A','5'),
+('2','B','4'),
+('3','C','3'),
+('4','D','3'),
+('5','E','3'),
+('6','F','3'),
+('7','G','3'),
+('8','H','3'),
+('9','I','3'),
+('10','J','3'),
+('11','K','3'), 
+('12','M','3'),
+('13','N','3'),
+('14','L','3'),
+('15','O','5'),
+('16','P','5'),
+('17','Q','5'),
+('18','R','5'),
+('19','S','5'),
+('20','T','5'),
+('21','U','5'),
+('22','V','5'),
+('23','W','5'),
+('24','X','5'),
+('25','Y','5'),
+('26','Z','3'),  
+('27','AA','5'),
+('28','AB','5'),
+('29','AC','5'),
+('30','AD','3'),
+('31','AE','3'),
+('32','AF','3'),
+('33','AG','3'),
+('34','AH','3'),
+('35','AI','3'),
+('36','AJ','3'),
+('37','AK','3'),
+('38','AL','3'),
+('39','AM','3'),
+('40','AN','3'),
+('41','AO','3');
+
+
+ALTER TABLE users ADD COLUMN totalResourceRate FLOAT DEFAULT 0;
+
+ALTER TABLE users ADD COLUMN totalResources INT DEFAULT 0;
+
+
+ALTER TABLE mining_area 
+ADD FOREIGN KEY (card_type) REFERENCES cards(card_type);
+
+DELIMITER //
+CREATE PROCEDURE UpdateResourceRate(IN userId INT)
+BEGIN
+    DECLARE totalRate FLOAT DEFAULT 0;  -- Set default value to 0
+    
+    SELECT COALESCE(SUM(m.quantity * c.bonus), 0) INTO totalRate
+    FROM mining_area m
+    JOIN cards c ON m.card_type = c.card_type
+    WHERE m.user_id = userId;
+    
+    -- If totalRate is NULL, set it to 0
+    IF totalRate IS NULL THEN
+        SET totalRate = 0;
+    END IF;
+    
+    UPDATE users SET totalResourceRate = totalRate WHERE user_id = userId;
+END;
+//
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+	ALTER TABLE user_bag
+ADD COLUMN card_id CHAR(36) NOT NULL,
+ADD UNIQUE (card_id);
+
+
+ALTER TABLE user_bag
+ADD FOREIGN KEY (card_type) REFERENCES card_images(card_type) ON DELETE RESTRICT;
+
+
+CREATE TABLE user_bag (
+    card_id CHAR(36) NOT NULL,
+    user_id INT NOT NULL,
+    card_type CHAR(1) NOT NULL,
+    quantity INT DEFAULT 1,
+    PRIMARY KEY (card_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (card_type) REFERENCES card_images(card_type) ON DELETE RESTRICT
+);
+
+ALTER TABLE mining_area
+ADD COLUMN card_id CHAR(36) NOT NULL,
+ADD PRIMARY KEY (card_id);
+
+
+CREATE TABLE mining_area (
+    card_id CHAR(36) NOT NULL,
+    user_id INT NOT NULL,
+    card_type CHAR(1) NOT NULL,
+    quantity INT DEFAULT 1,
+    PRIMARY KEY (card_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (card_type) REFERENCES card_images(card_type) ON DELETE RESTRICT
+);
+
+CREATE TABLE transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    amount FLOAT NOT NULL,
+    status VARCHAR(255) NOT NULL,  -- 例如: '成功', '失敗', '處理中'
+    transactionDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+ALTER TABLE transactions ADD order_id VARCHAR(255);
+

@@ -1,0 +1,126 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(to bottom right, #e9ecef, #cfd8dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.register-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+    max-width: 400px;
+    width: 100%;
+   
+}
+
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.form-group input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    transform: scale(1.03);
+}
+.btn-container {
+    padding: 20px;
+    transition: .1s ease-out;  /* 更快且更滑順的過渡 */
+}
+
+#btn {
+    padding: 5px 20px;
+    border: none;
+    background: rgb(25, 62, 97);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 15px;
+    transition: .2s ease-out;  /* 更快且更滑順的過渡 */
+    margin: 25px 120px;
+    white-space: nowrap;
+}
+
+#btn:hover {
+    cursor: pointer;
+}
+
+
+.signup {
+    color: rgb(70, 70, 70);
+    margin-top: 10px;
+}
+
+.shift-left {
+    transform: translateX(-120%);
+}
+
+.shift-right {
+    transform: translateX(120%);
+}
+
+.shift-top {
+    transform: translateY(-120%);
+}
+
+.shift-bottom {
+    transform: translateY(120%);
+}
+
+.no-shift {
+    transform: translate(0%, 0%);
+}
+
+
+
+
+.link-group {
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.register-link, .home-link  {
+    text-decoration: none;
+    padding: 20px;
+    transition: .2s linear;
+}
+
+.register-link:hover, .register-link:focus , .home-link:hover, .home-link:focus{
+    color: #0056b3;
+    text-decoration: none;
+}
+.home-link {
+    margin-top: 15px;
+}
+
+

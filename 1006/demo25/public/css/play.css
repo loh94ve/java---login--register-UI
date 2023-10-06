@@ -1,0 +1,117 @@
+.logo {
+    width: 50%;  /* 或使用百分比，例如 width: 100%; */
+    height: auto;  /* 保持圖片的寬高比 */
+}
+/* #miningCards img,#userCards img{
+    width: 10%;
+    height: auto;
+} */
+
+body{
+    background-color:  #4CAF50;
+}
+
+.mining-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1500px;
+    margin: 20px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: auto;
+}
+
+.mining-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.mining-container::-webkit-scrollbar-track {
+    background: rgba(200, 200, 200, 0.2);
+}
+
+.mining-container::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.6);
+    border-radius: 5px;
+}
+
+.mining-container::-webkit-scrollbar-thumb:hover {  
+    background: rgba(80, 80, 80, 0.8);
+}
+
+.card-container, 
+#挖矿 {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;   
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+#totalResources, 
+#resourceRate {
+    color: #e74c3c;
+    font-weight: bold;
+}
+.mining-container{
+    padding-bottom: 100px;
+}
+#userCards,#miningCards {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    
+    
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0; /* 确保没有外边距 */
+    padding: 5PX; /* 确保没有内边距 */
+}
+
+.img-container {
+    position: relative;
+    width: 100%;  /* 或者一个固定的值，比如 200px */
+}
+
+.card-container img {
+    width: 100%;  /* 或者一个固定的值，比如 200px */
+    height: auto;
+    object-fit: contain;
+}
+.card-checkbox {
+    position: absolute;
+    bottom:-5% ;
+    left: 52%; 
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}

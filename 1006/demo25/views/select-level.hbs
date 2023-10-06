@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/icons/icon.png" type="image/png">
+    <title>PokeMon</title>
+    <link rel="stylesheet" href="/CSS/select-level.css">
+
+</head>
+<body>
+    <h1>選擇關卡</h1>
+    <button onclick="startBattle(1)">關卡 1</button>
+    <button onclick="startBattle(2)">關卡 2</button>
+    <button onclick="startBattle(3)">關卡 3</button>  
+
+<script type="text/javascript">
+    function startBattle(level) {        
+        const urlParts = window.location.pathname.split('/');
+        const cardId = urlParts[urlParts.length - 1];  
+
+        
+        window.location.href = '/select-level/' + cardId + '/demo?level=' + level;
+    }
+</script>
+ 
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+#userCards {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    
+    
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 5PX; 
+}
+
+.img-container {
+    position: relative;
+    width: 100%;  
+}
+
+.card-container img {
+    width: 100%;  
+    height: auto;
+    object-fit: contain;
+}
+.card-checkbox {
+    position: absolute;
+    bottom:-5% ;
+    left: 52%; 
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+

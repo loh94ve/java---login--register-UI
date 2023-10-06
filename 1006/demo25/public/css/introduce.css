@@ -1,0 +1,108 @@
+body {
+    background-color: #4CAF50;
+    font-family: 'Arial', sans-serif;
+}
+
+.book1-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    padding-bottom: 100px; 
+    border-radius: 10px;
+    width: 65%;
+    max-width: 1500px;
+    margin: 20px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: auto;
+}
+
+.introduce-container {
+    font-weight: bold;
+}
+
+h1, h2, p {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.book1-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.book1-container::-webkit-scrollbar-track {
+    background: rgba(200, 200, 200, 0.2);
+}
+
+.book1-container::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.6);
+    border-radius: 5px;
+}
+
+.book1-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(80, 80, 80, 0.8);
+}
+
+
+.bookf-container {
+    position: fixed;
+    top: 30%;
+    right: 60px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.bookf-container a,
+.bookf-link {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;  /* 添加边框以分隔链接 */
+}
+
+.bookf-container a:hover {
+    background-color: #e0e0e0;  /* 添加悬停效果 */
+}
+
+.bookf-link {
+    position: relative;
+    padding-left: 30px;  /* 增加左填充以腾出空间给月份标记 */
+}
+
+.bookf-container .active {
+    color: red;
+}
+
+/* 月份标记样式 */
+.month-marker {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.bookf-link.active .month-marker {
+    background-color: red;
+}
+
+

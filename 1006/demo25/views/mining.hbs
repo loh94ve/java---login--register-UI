@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/icons/icon.png" type="image/png">
+    <title>PokeMon</title>
+    <link rel="stylesheet" href="./CSS/play.css">
+    <link rel="stylesheet" href="./CSS/pageindexfooterplay.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+    #right a.logo-button {
+        font-size: 30px;
+        text-decoration: none;
+    }
+    #right button.logo-button  {
+        font-size: 25px;            
+    }
+    </style>
+</head>
+<body>
+    <div id="content-wrap">        
+        <div id="title">
+            <div class="logo">
+                <a href="/">
+                    <label for=""><img src="./images/logo.png" width="70px" height="70px"></label>
+                </a>
+            </div>
+            <div class="menu">
+                <a id="meun-shop" href="">抽卡</a>
+                <a id="meun-bag" href="">背包</a>                
+                <a id="meun-mining"href="">礦場</a>
+                <a id="meun-battle" href="">對戰</a>
+                <a id="meun-book"href="">圖鑑</a>
+                {{!-- <a id="meun-shop" href="">市場</a> --}}
+                <a id=""href="introduce">遊戲百科</a>
+            </div>
+            
+            <div id="right">
+                <a href="https://twitter.com" class="logo-button fa fa-twitter"></a>
+                <a href="https://zh-tw.facebook.com" class="logo-button fa fa-facebook-f"></a>
+
+                <a href="YOUR_SHARE_LINK" class="logo-button fa fa-share-alt"></a>
+
+        
+
+
+                <a href="https://google.com" class="logo-button fa fa-google-plus"></a>
+
+                <a href="https://github.com" class="logo-button fa fa-github"></a>
+                
+                {{#if loggedIn}}
+                    <button class="logo-button" id="logout">登出</button>
+                {{else}}
+                    <button class="logo-button"><a href="/login" id="login">登入</a></button>
+                {{/if}}
+                <button class="logo-button"><a href="/register">註冊</a></button>
+                            
+              
+                               
+            </div>
+        </div>       
+        
+    </div>
+
+
+    <div class="mining-container">                
+
+        <button id="moveSelectedToBackpack">移至背包</button>
+        <button id="toggleSelect">全選/取消全選</button>
+        {{!-- <button id="moveToBackpackButton">全部移回背包</button> --}}
+        <p id="ID" style="display: none;">{{userId}}</p>        
+        <div id="挖矿" class="tabcontent">
+            <h2>挖礦</h2>
+            <div id="miningCards">
+                <!-- 在挖礦區域顯示礦區中的卡片 -->
+            </div>
+            <p>當前資源金幣: <span id="totalResources">{{totalResources}}</span></p>
+            <p>資產產出: <span id="resourceRate">{{totalResourceRate}}</span> 金幣/秒</p>
+            <button onclick="collectCoins()">領取金幣</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>版權 © 2023 叉燒公司</p>
+        <a href="#top">返回頂部</a>
+    </footer>
+
+<script src="./js/mining.js"></script> 
+<script src="./js/pageindex.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const userIdElement = document.getElementById('ID');
+    const userId = userIdElement ? userIdElement.textContent : null;
+
+    const ws = new WebSocket('ws://localhost:5000');
+
+    ws.onmessage = (event) => {
+        console.log('Received data:', event.data);  // 输出从服务器接收到的原始数据
+        const users = JSON.parse(event.data);
+        console.log('Parsed users:', users);  // 输出解析后的用户数组
+        const currentUser = users.find(user => String(user.user_id) === String(userId));
+
+        console.log('Current user:', currentUser);  // 输出找到的currentUser对象
+        if (currentUser) {
+            document.getElementById('totalResources').textContent = currentUser.totalResources;
+        }
+};
+
+
+
+    
+    // 加载用戶卡片
+    //loadUserCards();
+    
+    // 加载挖礦卡片
+    loadMiningCards();
+    
+    // 獲取資源
+    //getResourceRate(userId);
+
+    // 開始挖礦
+    //startMining();
+
+    //fetchTotalResourcesFromDatabase();
+});
+
+</script> 
+
+
+
+</body>
+</html>
